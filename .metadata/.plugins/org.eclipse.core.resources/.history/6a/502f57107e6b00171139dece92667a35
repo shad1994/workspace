@@ -1,0 +1,5 @@
+package com.FirstSeleniumProject.LaunchBrowser;
+
+public class Locators {
+
+}

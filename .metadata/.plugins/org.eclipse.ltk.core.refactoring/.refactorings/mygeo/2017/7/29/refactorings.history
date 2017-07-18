@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;Wait_for_element.java&apos; to &apos;LaunchBrowser/src/main/java/com.FirstSeleniumProject.LaunchBrowser&apos;&#x0A;- Original project: &apos;mygeo&apos;&#x0A;- Destination element: &apos;LaunchBrowser/src/main/java/com.FirstSeleniumProject.LaunchBrowser&apos;&#x0A;- Original element: &apos;utility.Wait_for_element.java&apos;" description="Copy compilation unit" destination="=LaunchBrowser/src\/main\/java&lt;com.FirstSeleniumProject.LaunchBrowser" element1="/src\/test\/java&lt;utility{Wait_for_element.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1500375197510" units="1" version="1.0"/>
+</session>

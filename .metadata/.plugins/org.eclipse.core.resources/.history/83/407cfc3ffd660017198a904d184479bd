@@ -1,0 +1,13 @@
+import org.testng.annotations.Test;
+
+public class playertest {
+	requests  request=new requests();
+	
+	@Test
+	public void registerplayer() throws Exception
+	{
+		String message = "{\"board\":\"11\", \"player\":{\"name\": \"shadab\"}}";
+		request.sendPost("http://10.0.1.86/snl/rest/v1/player.json",message);
+	}
+
+}

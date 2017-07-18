@@ -1,0 +1,8 @@
+package firstpackage;
+
+public class Snippet {
+	public static void main(String[] args) {
+		java.io.BufferedReader
+	}
+}
+

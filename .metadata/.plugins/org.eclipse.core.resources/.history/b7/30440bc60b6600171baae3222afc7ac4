@@ -1,0 +1,52 @@
+package FirstProject.Myngconnect;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import com.google.gson.JsonObject;
+
+public class datafiletype {
+	
+	public static String filetype;
+	public static String username;
+	public static String password;
+	JsonObject jsonObject;
+	public void DatafileType() throws IOException, ParseException
+	{
+		AccessProperty prop=new AccessProperty();
+		filetype=prop.getproperty("datafiletype");
+		System.out.println(filetype+" "+"json");
+		if(filetype.equals("json".toString()))
+		{
+			
+			
+			System.out.println("hellooo");
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(new FileReader("src/test/resources/data.json"));
+
+			jsonObject = (JsonObject) obj;
+			System.out.println(jsonObject.toString());
+			username=jsonObject.get("username").toString();
+			System.out.println(username);
+			password=jsonObject.get("password").toString();
+		}
+		else if(filetype.equals("properties"))
+		{
+			 InputStream input = new FileInputStream("src/test/resources/data.properties");
+			 Properties p=new Properties();
+			 p.load(input);
+			username =p.getProperty("username");
+			password=p.getProperty("password");
+		}
+		
+	}
+
+}

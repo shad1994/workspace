@@ -1,0 +1,65 @@
+package rest.basicAuth;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
+
+//import org.apache.commons.codec.binary.Base64;
+
+import org.json.JSONObject;
+
+import rest.noAuth.firstpackage.requests;
+
+public class test {
+	Integer board_id;
+	
+	requests request=new requests();
+	
+	public void createboardtest() throws Exception {
+		//String response = request.sendGet("http://10.0.1.86/snl/rest/v2/board/new.json");
+		
+		/*String name = "su";
+		String password = "root_pass";
+
+		String authString = name + ":" + password;
+		System.out.println("auth string: " + authString);
+		byte[] authEncBytes = Base64.encodeBase64(authString.getBytes());
+		String authStringEnc = new String(authEncBytes);
+		System.out.println("Base64 encoded auth string: " + authStringEnc);
+
+		URL url = new URL("http://10.0.1.86");
+		URLConnection urlConnection = url.openConnection();
+		urlConnection.setRequestProperty("Authorization", "Basic " + authStringEnc);
+	*/
+		
+		/*JSONObject obj = new JSONObject(response);
+		JSONObject responseObj = obj.getJSONObject("response");
+		JSONObject board = responseObj.getJSONObject("board");
+		System.out.println(response.toString());
+		board_id = (Integer) board.get("id");*/
+	}
+	
+	public void secondmethod() throws MalformedURLException, IOException
+	{
+		String name = "dfsdfsd";
+		String password = "root_pass";
+		String url="http://10.0.1.86/snl/rest/v2/board.json";
+		HttpURLConnection connection = (HttpURLConnection) new URL(url).openConnection();
+		String encoded = Base64.getEncoder().encodeToString((name+":"+password).getBytes(StandardCharsets.UTF_8));  //Java 8
+		connection.setRequestProperty("Authorization", "Basic "+encoded);
+		System.out.println(connection.getResponseCode());
+	}
+	
+	public static void main(String args[]) throws Exception
+	{
+		test t=new test();
+		t.secondmethod();
+	}
+
+}

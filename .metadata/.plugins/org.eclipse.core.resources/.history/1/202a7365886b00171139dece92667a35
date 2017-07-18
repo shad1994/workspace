@@ -1,0 +1,149 @@
+package com.FirstSeleniumProject.LaunchBrowser;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.time.StopWatch;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.browserlaunchers.Sleeper;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class LaunchFirefox{
+	
+	public static void main(String args[]) throws IOException {
+		
+		/*Launchchrome lc=new Launchchrome();
+		lc.openChrome();*/
+		Locators locator=new Locators();
+		System.setProperty("webdriver.gecko.driver", "/home/qainfotech/workspace/LaunchBrowser/resources/geckodriver");
+
+		WebDriver driver = new FirefoxDriver();
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		//System.out.println("Hello Google...");
+       // driver.manage().window().maximize();
+        driver.get("https://accounts.google.co.in");
+       
+        
+       System.out.println(locator.findLocator("email"));
+		WebElement email = driver.findElement(locator.findLocator("email"));
+		email.sendKeys("shad.sayeed2");
+		System.out.println("email id entered..");
+		
+		
+		 
+		WebElement button = driver.findElement(locator.findLocator("nextbutton"));
+		button.click();
+		System.out.println("enter the password..");
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		WebElement element = driver.findElement(locator.findLocator("password"));
+		element.sendKeys("shad1994");
+		System.out.println("password entered..");
+		
+		
+		 
+		WebElement button2 = driver.findElement(locator.findLocator("nextbutton"));
+			button2.click();
+			System.out.println("Welcome ...");
+			
+			System.out.println("Time to open your inbox ...");
+			
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+			WebElement inbox = driver.findElement(locator.findLocator("inbox"));
+			inbox.click();
+			System.out.println("enter into inbox..");
+			
+
+			try {
+				Thread.sleep(6000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			 /*List<WebElement> mails = driver.findElements(locator.findLocator("email"));
+		        System.out.println(mails.size());
+		        for (WebElement mail : mails) {
+		        	System.out.println(mail.getText());
+		        	}
+		        
+		        mails.get(3).click();*/
+			
+			WebElement compose=driver.findElement(locator.findLocator("composebutton"));
+			compose.click();
+			
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			WebElement to=driver.findElement(locator.findLocator("to"));
+			to.sendKeys("shadabsayeed@qainfotech.com");
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			WebElement subject=driver.findElement(locator.findLocator("subject"));
+			subject.sendKeys("Hello Selenium");
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			WebElement content=driver.findElement(locator.findLocator("content"));
+			content.sendKeys("Automatic mail");
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			WebElement send=driver.findElement(locator.findLocator("sendbutton"));
+			send.click();
+			
+			System.out.println("Mail sent");
+			
+			
+		
+	}
+};

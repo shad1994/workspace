@@ -1,0 +1,35 @@
+package rest.oAuth2;
+
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
+
+
+public class test {
+	
+	String authURL = "http://10.0.1.86/snl/oauth/authorize";
+	String tokenURL = "http://10.0.1.86/snl/oauth/token";
+	public static void main(String[] args) throws IOException
+	{
+	 test rest=new test();
+	 rest.REST();
+	}
+
+	public void REST() throws IOException
+	{
+	HttpClient httpclient = new DefaultHttpClient();
+	HttpPost post = new HttpPost("http://10.0.1.86/snl/rest/v1/board.json");
+	/*post.getParams().setParameter("client_id", "cd614b5147720ebf4d51ce8487701a6ff21a711be7d7935ebbf914c6a115d70c");
+	post.getParams().setParameter("client_secret", "2dbdf2319387b50f9c31cf10f196aeb52c45e393454f5baba6b9c7ac30b4f471");
+	post.getParams().setParameter("redirect_uri", "urn:ietf:wg:oauth:2.0:oob");*/
+	HttpResponse response = httpclient.execute(post);
+	//System.out.println(response.toString());
+	}
+
+}

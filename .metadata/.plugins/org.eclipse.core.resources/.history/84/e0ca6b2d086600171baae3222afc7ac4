@@ -1,0 +1,13 @@
+package FirstProject.Myngconnect;
+
+import java.io.FileReader;
+
+public class datafiletype {
+	
+	String datafiletype;
+	public void DatafileType()
+	{
+		FileReader file=new FileReader("src/test/resources/options.properties");
+	}
+
+}

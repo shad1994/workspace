@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
+  <reporter-output>
+  </reporter-output>
+  <suite name="TestFile.TestNG.AnnotationFlowTest" duration-ms="18" started-at="2017-07-10T06:00:07Z" finished-at="2017-07-10T06:00:07Z">
+    <groups>
+    </groups>
+    <test name="Command line test" duration-ms="18" started-at="2017-07-10T06:00:07Z" finished-at="2017-07-10T06:00:07Z">
+      <class name="TestFile.TestNG.AnnotationFlowTest">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="beforeSuite" is-config="true" duration-ms="6" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="beforeTest" is-config="true" duration-ms="0" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="beforeClass()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="beforeClass" is-config="true" duration-ms="1" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeClass -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="testCase1()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="testCase1" duration-ms="1" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase1 -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="afterMethod" is-config="true" duration-ms="0" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="afterMethod" is-config="true" duration-ms="1" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="testCase2()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="testCase2" duration-ms="0" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testCase2 -->
+        <test-method status="PASS" signature="afterClass()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="afterClass" is-config="true" duration-ms="0" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterClass -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="afterTest" is-config="true" duration-ms="1" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterTest -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:TestFile.TestNG.AnnotationFlowTest@27f674d]" name="afterSuite" is-config="true" duration-ms="0" started-at="2017-07-10T11:30:07Z" finished-at="2017-07-10T11:30:07Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- TestFile.TestNG.AnnotationFlowTest -->
+    </test> <!-- Command line test -->
+  </suite> <!-- TestFile.TestNG.AnnotationFlowTest -->
+</testng-results>

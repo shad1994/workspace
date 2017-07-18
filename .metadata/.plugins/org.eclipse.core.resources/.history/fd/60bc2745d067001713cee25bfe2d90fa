@@ -1,0 +1,23 @@
+package rest.basicAuth;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
+import org.json.JSONObject;
+
+import rest.noAuth.firstpackage.requests;
+
+public class test {
+	String board_id;
+	
+	requests request=new requests();
+	
+	public void createboardtest() throws Exception {
+		String response = request.sendGet("http://10.0.1.86/snl/rest/v1/board/new.json");
+		JSONObject obj = new JSONObject(response);
+		JSONObject responseObj = obj.getJSONObject("response");
+		JSONObject board = responseObj.getJSONObject("board");
+		assertThat(responseObj.get("status")).isEqualTo(1);
+		board_id = (Integer) board.get("id");
+	}
+
+}

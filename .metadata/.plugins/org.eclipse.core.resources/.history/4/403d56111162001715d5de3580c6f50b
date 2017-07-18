@@ -1,0 +1,20 @@
+package com.test.test1;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
+
+
+
+long startTime = System.nanoTime();
+//code
+long endTime = System.nanoTime();
+System.out.println("Took "+(endTime - startTime) + " ns"); 
+    }
+}

@@ -1,0 +1,68 @@
+package com.yaml.yamlReadAndWrite;
+
+
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.testng.annotations.Test;
+import org.yaml.snakeyaml.Yaml;
+
+public class WriteYaml {
+
+	
+	public static void main(String...S) throws IOException {
+		System.out.println("skdg");
+		
+		ArrayList     list = new ArrayList<>();
+		Map<String, ArrayList> individualMap = new HashMap<String ,ArrayList>();
+//		
+//		list.add("akshay");
+//		list.add("shadab");
+//		list.add("mukesh");
+//		list.add("raman");
+//		
+		//individualMap.put("name", "shadab");
+		
+		ArrayList temp = new ArrayList<>();
+		temp.add("1201");
+		individualMap.put("id", temp);
+		temp.add("true");
+		individualMap.put("active", temp);
+		temp.add("john Doe");
+		individualMap.put("players",temp );
+		//System.out.println("skdg");
+
+		
+		list.add(individualMap);
+		
+	
+		Map<String, Object> individualMap2 = new HashMap<>();
+		
+		individualMap2.put("id", "1202");
+		individualMap2.put("active", "false");
+		individualMap2.put("players", "Mark Twain");
+		
+		list.add(individualMap2);
+		Map<String, Object> OuterMap = new HashMap<>();
+		OuterMap.put("individulas", list);
+		
+		
+		
+		Yaml yaml = new Yaml();
+		FileWriter writer = new FileWriter("src/main/resources/db.yaml");
+
+		yaml.dump(OuterMap, writer);
+
+		
+		
+	}
+
+}

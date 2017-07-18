@@ -1,0 +1,32 @@
+package rest.oAuth2;
+
+import java.io.InputStreamReader;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONObject;
+
+
+public class test {
+	
+	String authURL = "http://10.0.1.86/snl/oauth/authorize";
+	String tokenURL = "http://10.0.1.86/snl/oauth/token";
+	public static void main(String[] args) throws ClientProtocolException, IOException
+	{
+	REST rest = new test().REST();
+	}
+
+	public void REST() throws ClientProtocolException, IOException
+	{
+	HttpClient httpclient = new DefaultHttpClient();
+	HttpPost post = new HttpPost(tokenURL);
+	post.getParams().setParameter("client_id", "3MVG9rFJvQRVOvk6sl7xMXtrbyQb2XUv2vprLKWv0uxBLKFzNqtHJG6cmzuemPYDB3hPwqXsBlw0BGQPkb81P");
+	post.getParams().setParameter("client_secret", "4864720658246552438");
+	HttpResponse response = httpclient.execute(post);
+	System.out.println(response.toString());
+	}
+
+}

@@ -1,0 +1,25 @@
+package com.FirstSeleniumProject.LaunchBrowser;
+
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Locators {
+
+	String line;
+	public void findLocator(String key) throws IOException {
+		FileReader readFile = new FileReader("src/main/java/com/FirstSeleniumProject/LaunchBrowser/data.spec");
+
+		BufferedReader readbuffer = new BufferedReader(readFile);
+
+		while ((line = readbuffer.readLine()) != null) {
+			if (line.contains("username")) {
+				String[] part = line.split(" +");
+				System.out.println(part[2]);
+			}
+
+		}
+	}
+
+}

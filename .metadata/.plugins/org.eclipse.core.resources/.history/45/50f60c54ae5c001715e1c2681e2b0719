@@ -1,0 +1,79 @@
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.testng.annotations.BeforeTest;
+
+import com.qainfotech.tap.training.snl.api.Board;
+import com.qainfotech.tap.training.snl.api.GameInProgressException;
+import com.qainfotech.tap.training.snl.api.MaxPlayersReachedExeption;
+import com.qainfotech.tap.training.snl.api.NoUserWithSuchUUIDException;
+import com.qainfotech.tap.training.snl.api.PlayerExistsException;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.UUID;
+
+import static org.assertj.core.api.Assertions.*;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class BoardTest {
+
+	Board board;
+	UUID uuid;
+
+	@Test
+
+	public void boardTest() throws FileNotFoundException, UnsupportedEncodingException, IOException {
+		
+			board = new Board();
+	
+		assertThat(board.getUUID().toString().length()).isNotEqualTo(0);
+		
+	}
+
+	@Test
+	public void registerPlayerTest()
+			throws IOException, PlayerExistsException, GameInProgressException, MaxPlayersReachedExeption {
+
+		String name1 = "shadab";
+		String name2 = "nishant";
+		String name3 = "akshay";
+		String name4 = "jaspal";
+
+		board.registerPlayer(name1);
+		board.registerPlayer(name2);
+		board.registerPlayer(name3);
+		board.registerPlayer(name4);
+
+		assertThat(board.getData().getJSONArray("players").length()).isEqualTo(4);
+		System.out.println(board.getData().getJSONArray("players").length());
+	}
+	
+	@Test
+	
+	public void deletePlayerTest() throws FileNotFoundException, UnsupportedEncodingException, NoUserWithSuchUUIDException
+	{
+		//System.out.println(board.getData().getJSONArray("players").length());
+		JSONArray playerArray=new JSONArray();
+		playerArray=board.getData().getJSONArray("players");
+		//System.out.println(playerArray.length());
+		for(int i=0;i<playerArray.length();i++)
+		{
+			JSONObject singlePlayer=playerArray.getJSONObject(i);
+			if(singlePlayer.get("name").equals("shadab"))
+			{
+				uuid= (UUID) singlePlayer.get("uuid");
+				System.out.println(uuid);
+				
+			}
+			
+		}
+		board.deletePlayer(uuid);
+		assertThat(board.getData().getJSONArray("players").length()).isEqualTo(3);
+	}
+
+}

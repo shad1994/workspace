@@ -1,0 +1,48 @@
+package passparameters.specFile;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class readSpec {
+	public static void main(String args[]) throws IOException
+	{
+		readspec("username");
+	}
+	public static void readspec(String key) throws IOException
+	{
+		
+		FileReader readFile=new FileReader("src/main/java/passparameters/specFile/data.spec");
+		
+		String line="";
+		int c=0;
+		while((char)(c= readFile.read())!='#')
+		{
+			//System.out.print((char)c);
+			
+		}
+		BufferedReader readbuffer=new BufferedReader(readFile);
+		line=readbuffer.readLine();
+		
+		while((readbuffer.readLine().charAt(1))!='#')
+		{
+			line=readbuffer.readLine();
+			String[] part=line.split(" ");
+			for(int i=0;i<part.length;i++)
+			{
+				System.out.println(part[i]);
+				/*if(part[0].equals("username"))
+				{
+					System.out.println("path:"+part[2]);
+				}*/
+			}
+			System.out.println(line);
+		}
+		
+
+	}
+	
+	
+}

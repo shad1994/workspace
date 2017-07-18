@@ -1,0 +1,5 @@
+package converter.dollarsToRupee;
+
+public class Snippet {
+	 mvn -q clean test -Ddollars=[AMOUNT-OF-DOLLARS]}
+

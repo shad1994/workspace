@@ -1,0 +1,15 @@
+package FirstProject.Myngconnect;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
+public class HomepageTest{
+	@Test
+	public void homepagetest()
+	{
+		//WebDriver driver=InitialiseDriver.driver;
+		System.out.println("home page test here");
+		
+	}
+
+}

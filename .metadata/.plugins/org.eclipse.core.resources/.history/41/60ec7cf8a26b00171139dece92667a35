@@ -1,0 +1,96 @@
+package com.FirstSeleniumProject.LaunchBrowser;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class LaunchFirefox {
+
+	public static void main(String args[]) throws IOException {
+
+		Locators locator = new Locators();
+		System.setProperty("webdriver.gecko.driver", "/home/qainfotech/workspace/LaunchBrowser/resources/geckodriver");
+
+		WebDriver driver = new FirefoxDriver();
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+
+		driver.get("https://accounts.google.co.in");
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator.findLocator("email")));
+
+		//WebElement email = 
+				driver.findElement(locator.findLocator("email")).sendKeys("shad.sayeed2");
+		
+				//email;
+		System.out.println("email id entered..");
+
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(locator.findLocator("nextbutton")));
+
+		//WebElement button =
+		System.out.println(locator.findLocator("nextbutton"));
+		
+				driver.findElement(locator.findLocator("nextbutton")).click();
+				
+				
+				///ho gya.................
+				
+				
+	//	button.click();
+
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(locator.findLocator("password")));
+		
+		System.out.println("enter the password..");
+	//	WebElement pswd = 
+		
+		
+		System.out.println(locator.findLocator("password"));
+				driver.findElement(By.xpath("/html/body/div[1]/div[1]/div[2]/div[2]/form/div[2]/div/div/div[1]/div[1]/div/div[1]/div/div[1]/input")).sendKeys("shad1994");
+		//pswd.sendKeys("shad1994");
+		
+		System.out.println("password entered..");
+
+		wait.until(ExpectedConditions.visibilityOfElementLocated(locator.findLocator("nextbutton")));
+
+		WebElement button2 = driver.findElement(locator.findLocator("nextbutton"));
+		button2.click();
+		System.out.println("Welcome ...");
+
+		//System.out.println("Time to open your inbox ...");
+
+		// driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+		/*WebElement compose=driver.findElement(locator.findLocator("composebutton"));
+		compose.click();
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		WebElement to=driver.findElement(locator.findLocator("to"));
+		to.sendKeys("shadabsayeed@qainfotech.com");
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		WebElement subject=driver.findElement(locator.findLocator("subject"));
+		subject.sendKeys("Hello Selenium");
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		WebElement content=driver.findElement(locator.findLocator("content"));
+		content.sendKeys("Automatic mail");
+		
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		
+		
+		WebElement send=driver.findElement(locator.findLocator("sendbutton"));
+		send.click();
+		
+		System.out.println("Mail sent");*/
+
+	}
+};

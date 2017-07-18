@@ -1,0 +1,9 @@
+package FirstProject.Myngconnect;
+
+public class HomepageTest extends LoginTest{
+	public void homepagetest()
+	{
+		
+	}
+
+}

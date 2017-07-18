@@ -1,0 +1,74 @@
+package FirstProject.Myngconnect;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+
+public class LoginTest {
+	
+	/*public static void main(String args[]) throws InterruptedException
+	{
+		login();
+	}
+	*/
+	WebDriver driver = new FirefoxDriver();
+	
+	@Test(priority=1)
+	public void openbrowser() throws InterruptedException
+	{
+		
+		System.out.println("start");
+		System.setProperty("webdriver.gecko.driver", "/home/qainfotech/workspace/TestNG/resources/geckodriver");
+
+		
+		System.out.println("browser open");
+		Thread.sleep(2000);
+		driver.get("https://s-www.myngconnect.com/login/chooseMainUI.spr");
+		System.out.println("hit url");
+		
+	
+		WebElement educator = driver.findElement(By.id("imgEducators"));
+		educator.click();
+		
+		Thread.sleep(2000);
+		
+		
+		
+		
+	}
+	
+	@Test(priority=2)
+	public void loginTest() throws InterruptedException
+	{
+		WebElement username=driver.findElement(By.id("j_username"));
+		username.sendKeys("LegacyEdgeStage1499326061460@qaittest.com");
+		
+		Thread.sleep(2000);
+		
+		WebElement pswd=driver.findElement(By.id("passwordField"));
+		pswd.sendKeys("password");
+		
+		
+
+		Thread.sleep(2000);
+		
+		WebElement login=driver.findElement(By.id("imgLogin"));
+		login.click();
+		
+		System.out.println("Welcome");
+		
+		Thread.sleep(3000);
+		
+		WebElement logout=driver.findElement(By.xpath("//div[@class='logout icon logout-ctrl header-sprite custom-tooltip']"));
+		logout.click();
+		
+		
+	}
+
+	
+
+}

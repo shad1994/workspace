@@ -1,0 +1,8 @@
+package FirstProject.Myngconnect;
+
+public class NoSuchElementException {
+	
+	public NoSuchElementException(){
+        System.out.println("element not found");
+    }
+}

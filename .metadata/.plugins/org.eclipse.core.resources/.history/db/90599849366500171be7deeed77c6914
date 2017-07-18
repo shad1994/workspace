@@ -1,0 +1,15 @@
+package FirstProject.Myngconnect;
+
+public class Snippet {
+	System.setProperty("webdriver.gecko.driver", "/home/qainfotech/workspace/LaunchBrowser/resources/geckodriver");
+	
+			WebDriver driver = new FirefoxDriver();
+			
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			}
+

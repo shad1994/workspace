@@ -1,0 +1,113 @@
+package firstpackage;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.IOException;
+
+import org.json.JSONObject;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class playertest {
+	requests request = new requests();
+	Integer board_id = 4914;
+	static Integer player_id;
+	
+	@BeforeTest
+	public void createboard() throws Exception
+	{
+		String response=request.sendGet("http://10.0.1.86/snl/rest/v1/board/new.json");
+		JSONObject obj=new JSONObject(response);
+		JSONObject responseObj=obj.getJSONObject("response");
+		JSONObject board=responseObj.getJSONObject("board");
+		board_id=(Integer) board.get("id");
+	}
+
+	@Test(priority=1)
+	public void registerplayer() throws Exception {
+		String message = "{\"board\":" + "\"" + board_id + "\"" + ",\"player\":{\"name\": \"shadab\"}}";
+		String response = request.sendPost("http://10.0.1.86/snl/rest/v1/player.json", message);
+		JSONObject obj = new JSONObject(response);
+		JSONObject responseObj = obj.getJSONObject("response");
+		JSONObject playerObj = responseObj.getJSONObject("player");
+		assertThat(responseObj.get("status")).isEqualTo(1);
+		assertThat(playerObj.get("board_id")).isEqualTo(board_id);
+		assertThat(playerObj.get("name")).isEqualTo("shadab");
+		player_id = playerObj.getInt("id");
+
+	}
+
+	@Test(priority=2)
+	public void getplayerdetails() throws Exception {
+
+		String response = request.sendGet("http://10.0.1.86/snl/rest/v1/player/" + player_id + ".json");
+		JSONObject obj = new JSONObject(response);
+		System.out.println(response);
+		JSONObject responseObj = obj.getJSONObject("response");
+		JSONObject playerObj = responseObj.getJSONObject("player");
+		assertThat(responseObj.get("status")).isEqualTo(1);
+		assertThat(playerObj.getInt("id")).isEqualTo(player_id);
+	}
+
+	@Test(priority=3)
+	public void updateplayerdetailtest() throws IOException {
+
+		String data = "{\"player\":{\"name\":\"shad\"}}";
+
+		String response = request.putrequest("http://10.0.1.86/snl/rest/v1/player/" + player_id + ".json", data);
+		JSONObject obj = new JSONObject(response);
+		JSONObject responseObj = obj.getJSONObject("response");
+		JSONObject playerObj = responseObj.getJSONObject("player");
+		assertThat(responseObj.get("status")).isEqualTo(1);
+		assertThat(playerObj.get("name")).isEqualTo("shad");
+	}
+
+	
+
+	@Test(priority=4)
+	public void moveplayertest() throws Exception {
+
+		String response = request.sendGet("http://10.0.1.86/snl/rest/v1/player/" + player_id + ".json");
+		JSONObject obj = new JSONObject(response);
+		System.out.println(response);
+		JSONObject responseObj = obj.getJSONObject("response");
+		JSONObject playerObj = responseObj.getJSONObject("player");
+		Integer startingposition = playerObj.getInt("position");
+		System.out.println("get details");
+		String response2 = request.sendGet("http://10.0.1.86/snl/rest/v1/move/" + board_id + ".json?player_id=" + player_id);
+		System.out.println("move");
+
+		JSONObject obj2 = new JSONObject(response2);
+		JSONObject responseObj2 = obj2.getJSONObject("response");
+		JSONObject playerObj2 = responseObj2.getJSONObject("player");
+		Integer finalposition = playerObj2.getInt("position");
+		assertThat(responseObj2.get("status")).isEqualTo(1);
+		assertThat(startingposition).isNotEqualTo(finalposition);
+	}
+	
+	@Test(priority=5)
+	public void deleteplayertest() throws Exception {
+		String response = request.deleteRequest("http://10.0.1.86/snl/rest/v1/player/" + player_id + ".json");
+		
+		JSONObject obj = new JSONObject(response);
+		JSONObject responseObj = obj.getJSONObject("response");
+		assertThat(responseObj.get("status")).isEqualTo(1);
+
+		String response2 = request.sendGet("http://10.0.1.86/snl/rest/v1/player/" + player_id + ".json");
+		assertThat(response2).isEqualTo("not found");
+		
+	}
+	
+	@Test(priority=6)
+	public void alreadydeletedplayer_deletetest() throws IOException
+	{
+		String response = request.deleteRequest("http://10.0.1.86/snl/rest/v1/player/" + player_id + ".json");
+		assertThat(response).isEqualTo("not exist");
+	}
+
+	/*public static void main(String args[]) throws Exception {
+		playertest test = new playertest();
+		test.deleteplayertest();
+		//System.out.println("player moved");
+	}*/
+
+}

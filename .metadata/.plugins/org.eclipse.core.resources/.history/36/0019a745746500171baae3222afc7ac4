@@ -1,0 +1,14 @@
+package FirstProject.Myngconnect;
+
+import java.io.FileInputStream;
+import java.io.InputStream;
+
+public class AccessProperty {
+	public void getproperty()
+	{
+		
+	}
+	
+	 InputStream input = new FileInputStream("src/test/resources/options.properties");
+
+}

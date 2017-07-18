@@ -1,0 +1,147 @@
+package com.FirstSeleniumProject.LaunchBrowser;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.time.StopWatch;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.browserlaunchers.Sleeper;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class LaunchFirefox{
+	
+	public static void main(String args[]) {
+		
+		/*Launchchrome lc=new Launchchrome();
+		lc.openChrome();*/
+		System.setProperty("webdriver.gecko.driver", "/home/qainfotech/workspace/LaunchBrowser/resources/geckodriver");
+
+		WebDriver driver = new FirefoxDriver();
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		
+		//System.out.println("Hello Google...");
+       // driver.manage().window().maximize();
+        driver.get("https://accounts.google.co.in");
+       
+        
+       
+		/*WebElement email = driver.findElement(By.id("identifierId"));
+		email.sendKeys("shad.sayeed2");
+		System.out.println("email id entered..");
+		
+		
+		 
+		WebElement button = driver.findElement(By.className("CwaK9"));
+		button.click();
+		System.out.println("enter the password..");
+		
+		try {
+			Thread.sleep(5000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		WebElement element = driver.findElement(By.cssSelector("input[class='whsOnd zHQkBf']"));
+		element.sendKeys("shad1994");
+		System.out.println("password entered..");
+		
+		
+		 
+		WebElement button2 = driver.findElement(By.className("CwaK9"));
+			button2.click();
+			System.out.println("Welcome ...");
+			
+			System.out.println("Time to open your inbox ...");
+			
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			
+			WebElement inbox = driver.findElement(By.className("WaidBe"));
+			inbox.click();
+			System.out.println("enter into inbox..");
+			
+
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			 List<WebElement> mails = driver.findElements(By.cssSelector("tr.zA.zE"));
+		        System.out.println(mails.size());
+		        for (WebElement mail : mails) {
+		        	System.out.println(mail.getText());
+		        	}
+		        
+		        mails.get(3).click();
+			
+			WebElement compose=driver.findElement(By.cssSelector("div.T-I.J-J5-Ji.T-I-KE.L3"));
+			compose.click();
+			
+			try {
+				Thread.sleep(5000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			WebElement to=driver.findElement(By.cssSelector("div.wO.nr.l1"));
+			to.sendKeys("shadabsayeed@qainfotech.com");
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			WebElement subject=driver.findElement(By.cssSelector("input.aoT"));
+			subject.sendKeys("Hello Selenium");
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			WebElement content=driver.findElement(By.cssSelector("div.Am.Al.editable.LW-avf"));
+			content.sendKeys("Automatic mail");
+			
+			try {
+				Thread.sleep(2000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+			WebElement send=driver.findElement(By.cssSelector("div.T-I.J-J5-Ji.aoO.T-I-atl.L3"));
+			send.click();
+			
+			System.out.println("Mail sent");*/
+			
+			
+		
+	}
+};

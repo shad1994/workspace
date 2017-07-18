@@ -1,0 +1,45 @@
+package com.yaml.yamlReadAndWrite;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.yaml.snakeyaml.Yaml;
+
+public class WriteYaml {
+
+	public void writeyaml() throws IOException {
+		System.out.println("skdg");
+		
+		List list = new ArrayList<>();
+		Map<String, Object> individualMap = new HashMap<>();
+		
+		list.add("akshay");
+		list.add("shadab");
+		list.add("mukesh");
+		list.add("raman");
+		
+		individualMap.put("name", "shadab");
+		individualMap.put("id", "4180");
+		individualMap.put("active", "true");
+		individualMap.put("players", list);
+		//System.out.println("skdg");
+
+		Yaml yaml = new Yaml();
+		FileWriter writer = new FileWriter("src/main/resources/db.yaml");
+
+		yaml.dump(individualMap, writer);
+
+		
+		
+	}
+
+}

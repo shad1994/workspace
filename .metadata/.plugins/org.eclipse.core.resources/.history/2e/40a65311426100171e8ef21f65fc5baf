@@ -1,0 +1,51 @@
+package com.yaml.yamlReadAndWrite;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.yaml.snakeyaml.Yaml;
+
+public class WriteYaml {
+
+	public static void main(String... S) throws IOException {
+		System.out.println("skdg");
+		
+		List<Individual> list = new ArrayList<>();
+		Map<String, Object> individualMap = new HashMap<>();
+		
+		individualMap.put("name", "shadab");
+		individualMap.put("id", "4180");
+		individualMap.put("active", "true");
+		System.out.println("skdg");
+	//	Individual individual = new Individual(individualMap);
+		//list.add(individual);
+		//System.out.println(list.size());
+		Yaml yaml = new Yaml();
+		FileWriter writer = new FileWriter("src/main/resources/db.yaml");
+
+		yaml.dump(individualMap, writer);
+
+		
+//		
+//			   Map<String, Object> data = new HashMap<String, Object>();
+//			   data.put("name", "Silenthand Olleander");
+//			   data.put("race", "Human");
+//			   data.put("traits", new String[] { "ONE_HAND", "ONE_EYE" });
+//			   Yaml yaml = new Yaml();
+//			   FileWriter writer = new FileWriter(new File("src/main/resources/db.yaml"));
+//			   yaml.dump(data, writer);
+//			   System.out.println(writer.toString());
+//			
+		
+	}
+
+}

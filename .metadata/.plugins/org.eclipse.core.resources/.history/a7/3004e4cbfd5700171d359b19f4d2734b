@@ -1,0 +1,80 @@
+package com.qainfotech.tap.training.resourceio;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.HashMap;
+
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Ramandeep RamandeepSingh AT QAInfoTech.com
+ */
+public class PropertiesOptionsIO{
+	
+	public static void main(String args[])
+	{
+		try {
+			getOptionValue("vsd");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*try {
+			addOption("vsd","sdfsef");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}*/
+	}
+
+    public static  Object getOptionValue(String optionKey) throws IOException {  
+    	//System.out.println(optionKey);
+    	
+    	
+    	 Map<String, String> map = new HashMap<String, String>();
+         BufferedReader in = new BufferedReader(new FileReader("src/main/resources/options.properties"));
+        String line = "";
+        line=in.readLine();
+        
+         
+         while (line != null) {
+        	
+        	 //System.out.println(line);
+        	 line=in.readLine();
+        	 String parts[]=line.split("=");
+        	 String part1=parts[0];
+        	 System.out.println(part1);
+             map.put(parts[0], parts[1]);
+        	 
+         }
+         in.close();
+        // System.out.println(map.get(optionKey));
+        // System.out.println("shad");
+        //throw new UnsupportedOperationException("Not implemented.");
+         return map;
+    }
+
+    public static  void addOption(String optionKey, String optionValue) throws IOException {
+        //throw new UnsupportedOperationException("Not implemented.");
+    	//System.out.println(optionKey);
+    	Map<String, String> map1 = new HashMap<String, String>();
+    	
+    	map1.put(optionKey, optionValue);
+    	
+    	try (BufferedWriter bw = new BufferedWriter(new FileWriter("src/main/resources/options.properties"))) {
+         
+    		for (Map.Entry<String, String> map : map1.entrySet()) {
+    			bw.append(map.getKey()+"="+map.getValue());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}

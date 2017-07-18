@@ -1,0 +1,19 @@
+package com.FirstSeleniumProject.LaunchBrowser;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+
+public class Launchchrome {
+	
+	public static WebDriver driver;
+	@Test
+	public void openChrome()
+	{
+		System.out.println("launching chrome browser");
+		System.setProperty("webdriver.chrome.driver","/home/qainfotech/Downloads/chromedriver");
+		driver = new ChromeDriver();
+		driver.navigate().to("http://google.com");
+	}
+
+}

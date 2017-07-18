@@ -1,0 +1,23 @@
+package passparameters.specFile;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class readSpec {
+	public static void main(String args[]) throws IOException
+	{
+		readspec();
+	}
+	public static void readspec() throws IOException
+	{
+		
+		FileReader readFile=new FileReader("/specFile/data.spec");
+		String line="";
+		System.out.println(readFile.read());
+
+	}
+	
+	
+}

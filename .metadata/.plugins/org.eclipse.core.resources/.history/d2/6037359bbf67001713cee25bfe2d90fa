@@ -1,0 +1,105 @@
+package firstpackage;
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+
+import javax.net.ssl.HttpsURLConnection;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.json.JSONObject;
+import org.testng.annotations.Test;
+
+
+import static org.assertj.core.api.Assertions.*;
+import static org.testng.Assert.assertFalse;
+import static org.testng.Assert.assertTrue;
+
+public class BoardTest {
+	
+	requests request=new requests();
+	
+	static int board_id;
+
+	@Test(priority =1 )
+	public void createboardtest() throws Exception {
+			String response=request.sendGet("http://10.0.1.86/snl/rest/v1/board/new.json");
+			JSONObject obj=new JSONObject(response);
+			JSONObject responseObj=obj.getJSONObject("response");
+			JSONObject board=responseObj.getJSONObject("board");
+			assertThat(responseObj.get("status")).isEqualTo(1);
+			board_id=(Integer) board.get("id");
+	}
+	
+	@Test(priority =2 )
+	public void getlistofboardtest() throws Exception
+	{
+		String response=request.sendGet("http://10.0.1.86/snl/rest/v1/board.json");
+		JSONObject obj=new JSONObject(response);
+		JSONObject responseObj=obj.getJSONObject("response");
+		assertThat(responseObj.get("status")).isEqualTo(1);
+	}
+	
+	@Test(priority =3)
+	public void getddetailofboard() throws Exception
+	{
+		String response=request.sendGet("http://10.0.1.86/snl/rest/v1/board/"+board_id+".json");
+		JSONObject obj=new JSONObject(response);
+		JSONObject responseObj=obj.getJSONObject("response");
+		JSONObject board=responseObj.getJSONObject("board");
+		assertThat(responseObj.get("status")).isEqualTo(1);
+		assertThat(board.get("id")).isEqualTo(board_id);
+	}
+	
+	@Test(priority =4)
+	public void resetboardtest() throws Exception
+	{
+		String response=request.putrequest("http://10.0.1.86/snl/rest/v1/board/"+board_id+".json",null);
+		JSONObject obj=new JSONObject(response);
+		JSONObject responseObj=obj.getJSONObject("response");
+		JSONObject board=responseObj.getJSONObject("board");
+		assertThat(responseObj.get("status")).isEqualTo(1);
+	
+	}
+	
+	@Test(priority =5)
+	public void deleteboardtest() throws Exception
+	{
+		String response=request.deleteRequest("http://10.0.1.86/snl/rest/v1/board/"+board_id+".json");
+		if(response.equals("not exist"))
+		{
+		System.out.println("board not exists");	
+		}
+		else
+		{
+		JSONObject obj=new JSONObject(response);
+		JSONObject responseObj=obj.getJSONObject("response");
+		assertThat(responseObj.get("status")).isEqualTo(1);
+		//System.out.println(board_id);
+		String response2=request.sendGet("http://10.0.1.86/snl/rest/v1/board/"+board_id+".json");
+		JSONObject obj2=new JSONObject(response2);
+		JSONObject responseObj2=obj2.getJSONObject("response");
+		System.out.println(responseObj2.get("status").toString());
+		assertThat(responseObj2.get("status")).isEqualTo(-1);
+		}
+		
+	}
+	
+	/*public static void main(String args[]) throws Exception
+	{
+		BoardTest board=new BoardTest();
+		board.deleteboardtest();
+	}*/
+	
+
+}

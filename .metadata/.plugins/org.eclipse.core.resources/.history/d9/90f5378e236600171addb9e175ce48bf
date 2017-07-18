@@ -1,0 +1,148 @@
+package FirstProject.Myngconnect;
+
+import java.awt.List;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+
+import com.google.gson.JsonObject;
+
+import jxl.Cell;
+import jxl.CellType;
+import jxl.Sheet;
+import jxl.Workbook;
+import jxl.read.biff.BiffException;
+
+public class datafiletype {
+	
+	public static String filetype;
+	public static String username;
+	public static String password;
+	
+	public void DatafileType() throws IOException, ParseException, BiffException
+	{
+		AccessProperty prop=new AccessProperty();
+		filetype=prop.getproperty("datafiletype");
+		System.out.println(filetype);
+		if(filetype.equals("json"))
+		{
+			
+			System.out.println("hellooo");
+			JSONParser parser = new JSONParser();
+			Object obj = parser.parse(new FileReader("src/test/resources/data.json"));
+
+			JSONObject jsonObject = (JSONObject) obj;
+			System.out.println(jsonObject.toString());
+			username=jsonObject.get("username").toString();
+			System.out.println(username);
+			password=jsonObject.get("password").toString();
+		}
+		else if(filetype.equals("properties"))
+		{
+			 InputStream input = new FileInputStream("src/test/resources/data.properties");
+			 Properties p=new Properties();
+			 p.load(input);
+			username =p.getProperty("username");
+			password=p.getProperty("password");
+		}
+		else if(filetype.equals("yaml"))
+		{
+			System.out.println("hello yaml");
+			//FileInputStream file=new FileInputStream("src/test/resources/data.yaml");
+			File file = new File("src/test/resources/data.yaml");
+			InputStream fis = null;
+
+			fis = new FileInputStream(file);
+			org.yaml.snakeyaml.Yaml yaml = new org.yaml.snakeyaml.Yaml();
+			Map<String,String> map= (Map<String, String>) yaml.load(fis);
+			
+			username=map.get("username");
+			System.out.println(username);
+			password=map.get("password");
+		}
+		else if(filetype.equals("xlsx"))
+		{
+			/*System.out.println("hello xlsx");
+			 File inputWorkbook = new File("src/test/resources/data.xlsx");
+		        Workbook w;
+		       
+		            w = Workbook.getWorkbook(inputWorkbook);
+		            System.out.println("workbook");
+		            // Get the first sheet
+		            Sheet sheet = w.getSheet(0);
+		            // Loop over first 10 column and lines
+
+		            for (int j = 0; j < sheet.getColumns(); j++) {
+		                for (int i = 0; i < sheet.getRows(); i++) {
+		                    Cell cell = sheet.getCell(j, i);
+		                    CellType type = cell.getType();
+		                    if (type == CellType.LABEL) {
+		                        System.out.println("I got a label "
+		                                + cell.getContents());
+		                    }
+
+		                    if (type == CellType.NUMBER) {
+		                        System.out.println("I got a number "
+		                                + cell.getContents());
+		                    }
+
+		                }
+		            }
+		            System.out.println("sheet");
+		            Cell cell = sheet.getCell(0, 1);
+		            username=cell.getContents().toString();
+		            password=sheet.getCell(1, 1).getContents().toString();*/
+		       
+		}
+		
+		
+	}
+	public static void main(String args[]) throws BiffException, IOException
+	{
+		 File inputWorkbook = new File("src/test/resources/data.xlsx");
+	        Workbook w;
+	       System.out.println("file input");
+	            w = Workbook.getWorkbook(inputWorkbook);
+	            System.out.println("workbook");
+	            // Get the first sheet
+	            Sheet sheet = w.getSheet(0);
+	            // Loop over first 10 column and lines
+
+	           /* for (int j = 0; j < sheet.getColumns(); j++) {
+	                for (int i = 0; i < sheet.getRows(); i++) {
+	                    Cell cell = sheet.getCell(j, i);
+	                    CellType type = cell.getType();
+	                    if (type == CellType.LABEL) {
+	                        System.out.println("I got a label "
+	                                + cell.getContents());
+	                    }
+
+	                    if (type == CellType.NUMBER) {
+	                        System.out.println("I got a number "
+	                                + cell.getContents());
+	                    }
+
+	                }
+	            }*/
+	            System.out.println("sheet");
+	            Cell cell = sheet.getCell(0, 1);
+	            username=cell.getContents().toString();
+	            password=sheet.getCell(1, 1).getContents().toString();
+	       
+		
+	}
+	
+
+
+}

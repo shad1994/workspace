@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="suite of suites">
+    <suite-files>
+        <suite-file path="src/test/java/rest/noAuth/suite1.xml" />
+        <suite-file path="src/test/java/rest/basicAuth/suite2.xml" />
+        <suite-file path="src/test/java/rest/oAuth2/suite3.xml" />
+    </suite-files>
+</suite>

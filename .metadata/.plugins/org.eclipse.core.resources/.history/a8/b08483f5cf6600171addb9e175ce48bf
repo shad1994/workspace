@@ -1,0 +1,46 @@
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import java.net.URL;
+
+
+import javax.net.ssl.HttpsURLConnection;
+
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+public class BoardTest {
+
+public static void main(String args[]) throws IOException {
+	String json = "{\"board\":\"8\", \"player\":{\"name\": \"shad\"}}";
+	 URL url = new URL("http://10.0.1.86/snl/rest/v1/player.json");
+
+	 HttpClient httpClient = HttpClientBuilder.create().build(); //Use this instead 
+
+	 try {
+
+	     HttpPost request = new HttpPost("http://10.0.1.86/snl/rest/v1/player.json");
+	     StringEntity params =new StringEntity("{\"board\":\"5\", \"player\":{\"name\": \"akshay\"}}");
+	     request.addHeader("content-type", "application/x-www-form-urlencoded");
+	     request.setEntity(params);
+	     HttpResponse response = httpClient.execute(request);
+System.out.println(response.toString());
+	     //handle response here...
+
+	 }catch (Exception ex) {
+
+	     //handle exception here
+
+	 } finally {
+	     //Deprecated
+	     //httpClient.getConnectionManager().shutdown(); 
+	 }
+		
+	}
+}
